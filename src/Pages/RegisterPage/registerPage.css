@@ -1,0 +1,106 @@
+body {
+    background-color: #FAF9F7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .register-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FAF9F7;
+    width: 80vw;
+    padding: 20px;
+    flex-direction: row-reverse;
+  }
+  
+  .register-image img {
+    height: 800px;
+    margin-left: 350px;
+  }
+  
+  .register-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    width: 50%;
+  }
+  
+  .register-logo {
+    max-width:400px; 
+    margin-bottom: 25px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 350px;
+  }
+  
+  .form-label {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 12px;
+  }
+  
+  .form-input {
+    padding: 12px;
+    font-size: 1rem;
+    border: 3px solid #000;
+    border-radius: 50px;
+    margin-bottom: 12px;
+    color: #000;
+    background-color: #FAF9F7;
+  }
+  
+  .register-button {
+    background-color: #3D6B54;
+    color: #FFF;
+    padding: 12px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 60px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 12px;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    font-style: bold;
+  }
+  
+  .register-link {
+    margin-top: 12px;
+    font-size: 1.2rem;
+    color: #000;
+    text-decoration: underline;
+  }
+  
+  .register-link:hover {
+    text-decoration: underline;
+  }
+  
+  @media (max-width: 768px) {
+    .register-container {
+      flex-direction: column;
+      width: 90vw;
+      padding: 15px;
+    }
+  
+    .register-image img {
+      max-width: 80%;
+    }
+  
+    .register-form {
+      width: 100%;
+      padding: 20px;
+    }
+  }
+  
