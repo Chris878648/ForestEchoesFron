@@ -1,7 +1,12 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LoginPage from './Pages/LoginPage/loginPage';
-import RegisterPage from './Pages/RegisterPage/registerPage';
+import React from "react";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import Cart from "./Pages/CartPage/cartPage";
+import Contact from "./Pages/ContactPage/contactPage";
+import Error from "./Pages/ErrorPage/errorPage";
+import HomePage from "./Pages/HomePage/homepage";
+import LoginPage from "./Pages/LoginPage/loginPage";
+import Profile from "./Pages/ProfilePage/profilePage";
+import RegisterPage from "./Pages/RegisterPage/registerPage";
 
 
 function App() {
@@ -10,9 +15,15 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/error" element={<Error />} />
       </Routes>
     </Router>
   );
 }
 
 export default App;
+

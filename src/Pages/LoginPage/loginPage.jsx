@@ -11,6 +11,11 @@ const LoginPage = () => {
     navigate('/register');
   };
 
+  const handleLogin = (e) => {
+    e.preventDefault();
+    navigate('/home');
+  }
+
   return (
     <div className="login-container">
       <div className="login-image">
@@ -23,7 +28,7 @@ const LoginPage = () => {
           <input type="text" id="username" name="username" className="input-field" />
           <label htmlFor="password">Password</label>
           <input type="password" id="password" name="password" className="input-field" />
-          <button type="submit" className="login-button">LOGIN</button>
+          <button className="login-button" onClick={handleLogin}>LOGIN</button>
         </form>
         <a href className="register-link" onClick={handleRegister}>Register</a>
       </div>
