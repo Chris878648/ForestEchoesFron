@@ -23,7 +23,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/error" element={<Error />} />
+        <Route path="/*" element={<Error />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       </Routes>
       <ToastContainer
