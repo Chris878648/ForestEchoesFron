@@ -5,19 +5,19 @@ import registerImg from "../../Images/register.png";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash, FaArrowLeft } from "react-icons/fa";
-import emailjs from "emailjs-com"; 
-import { register } from "../../services/authService";
+import emailjs from "emailjs-com";
+import { register, checkUserExists } from "../../services/authService";
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
     password: "",
-    verificationCode: "", 
+    verificationCode: "",
   });
 
   const [showPassword, setShowPassword] = useState(false);
-  const [generatedCode, setGeneratedCode] = useState(""); 
+  const [generatedCode, setGeneratedCode] = useState("");
   const [step, setStep] = useState(1);
 
   const navigate = useNavigate();
@@ -51,10 +51,10 @@ const RegisterPage = () => {
       };
 
       await emailjs.send(
-        "service_rzxc9pt", 
-        "template_8vrbqrp", 
+        "service_rzxc9pt",
+        "template_8vrbqrp",
         templateParams,
-        "TC1lJ4XPQq3ErLHs2" 
+        "TC1lJ4XPQq3ErLHs2"
       );
 
       toast.success("Correo de verificación enviado.");
@@ -64,8 +64,30 @@ const RegisterPage = () => {
     }
   };
 
+  const validateUserAndEmail = async () => {
+    try {
+      const response = await checkUserExists(formData.username, formData.email);
+      if (response.usernameExists) {
+        toast.error("El nombre de usuario ya está registrado");
+        return false;
+      }
+      if (response.emailExists) {
+        toast.error("El correo electrónico ya está registrado");
+        return false;
+      }
+      return true;
+    } catch (error) {
+      console.error("Error al validar el usuario y correo:", error);
+      toast.error("Error al validar el usuario y correo");
+      return false;
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const isValid = await validateUserAndEmail();
+    if (!isValid) return;
 
     const code = generateVerificationCode();
     setGeneratedCode(code);
@@ -80,7 +102,7 @@ const RegisterPage = () => {
     e.preventDefault();
     if (generatedCode === formData.verificationCode) {
       toast.success("Correo verificado con éxito.");
-      await handleRegister(); 
+      await handleRegister();
     } else {
       toast.error("El código de verificación es incorrecto.");
     }
@@ -90,7 +112,7 @@ const RegisterPage = () => {
     try {
       await register(formData.username, formData.email, formData.password);
       toast.success("Usuario registrado con éxito");
-      navigate("/"); 
+      navigate("/");
     } catch (error) {
       if (error.response && error.response.status === 400) {
         toast.error(error.response.data.message || "Username o email ya existen");
@@ -157,7 +179,7 @@ const RegisterPage = () => {
               </button>
             </div>
             <button type="submit" className="register-button">
-                Registrar
+              Registrar
             </button>
           </form>
         )}
