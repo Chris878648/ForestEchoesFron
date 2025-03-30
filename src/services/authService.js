@@ -9,6 +9,15 @@ export const register = async (username, email, password) => {
   }
 };
 
+export const checkUserExists = async (username, email) => {
+  try {
+    const response = await api.post("/check-user", { username, email });
+    return response.data; 
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const login = async (username, password) => {
   try {
     const response = await api.post("/login", { username, password });
