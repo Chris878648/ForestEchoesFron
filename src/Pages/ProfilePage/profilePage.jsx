@@ -1,8 +1,10 @@
 import Header from "../../Layouts/Header";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./profile.css";
 import contactPlantImg from "../../Images/profilePlant.jpg";  
 import { FaUserCircle } from 'react-icons/fa'; 
+import { toast } from "react-toastify";
+import { getUserById, updateUserPassword } from "../../services/userService";
 
 const Perfil = () => {
   const navLinks = [
@@ -10,10 +12,29 @@ const Perfil = () => {
   ];
 
   const [formData, setFormData] = useState({
-    username: 'Usuario',
-    email: 'usuario@gmail.com',
+    username: '',
+    email: '',
     password: '',
   });
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const userId = localStorage.getItem("userId");
+      try {
+        const data = await getUserById(userId);
+        setFormData({
+          username: data.username,
+          email: data.email,
+          password: ''
+        });
+      } catch (error) {
+        console.error("Error:", error);
+        toast.error("Error al obtener los datos del usuario");
+      }
+    };
+
+    fetchUserData();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,9 +44,20 @@ const Perfil = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    const userId = localStorage.getItem("userId");
+    try {
+      await updateUserPassword(userId, formData.password);
+      toast.success("Contraseña actualizada con éxito");
+      setFormData(prevState => ({
+        ...prevState,
+        password: ''
+      }));
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("Error al actualizar la contraseña");
+    }
   };
 
   return (

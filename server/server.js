@@ -30,8 +30,6 @@ const SECRET_KEY = "Rd.wZH}%aB$)uX--i:XQX;qeJcg$F5";
 const Stripe = require("stripe");
 const stripe = Stripe("sk_test_51R8CTCBGUhEyaGYF5HaoxIX75u1UdIy5ohMLKmzIkIayjq0IlnJDc1v0BdPXONTx9IpmC0XGInWvQr6aEJNiWc0o00ydnkiAAH"); // Clave secreta
 
-const crypto = require("crypto"); // Para generar códigos MFA
-
 
 Api.get("/", (req, res) => {
   res.status(200).json({ message: "API is working!" });

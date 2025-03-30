@@ -1,7 +1,9 @@
 import Header from "../../Layouts/Header";
 import React, { useState } from "react";
 import "./contact.css";
-import contactPlantImg from "../../Images/contactPlant.png";  
+import contactPlantImg from "../../Images/contactPlant.png";
+import { toast } from "react-toastify";
+import { sendContactMessage } from "../../services/userService"; // Importar el servicio
 
 const Contacto = () => {
   const navLinks = [
@@ -24,9 +26,19 @@ const Contacto = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    const userId = localStorage.getItem("userId");
+
+    try {
+      // Usar el servicio sendContactMessage
+      await sendContactMessage(formData.name, formData.email, formData.message, userId);
+      toast.success("Mensaje enviado con éxito");
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("Error al enviar el mensaje");
+    }
   };
 
   return (

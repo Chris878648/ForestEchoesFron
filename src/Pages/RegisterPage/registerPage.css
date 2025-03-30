@@ -1,106 +1,167 @@
 body {
-    background-color: #FAF9F7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
-  
+  background-color: #FAF9F7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.register-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FAF9F7;
+  width: 70vw;
+  padding: 20px;
+  max-width: 1000px;
+  flex-direction: row-reverse;
+}
+
+.register-image img {
+  height: 500px;
+  margin-left: 300px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 50%;
+}
+
+.register-logo {
+  max-width: 250px;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-label {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.form-input {
+  padding: 10px;
+  font-size: 0.9rem;
+  border: 2px solid #000;
+  border-radius: 50px;
+  margin-bottom: 10px;
+  color: #000;
+  background-color: #FAF9F7;
+}
+
+.register-button {
+  background-color: #3D6B54;
+  color: #FFF;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.register-link {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #000;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
   .register-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #FAF9F7;
-    width: 80vw;
-    padding: 20px;
-    flex-direction: row-reverse;
+      width: 80vw;
   }
-  
+
   .register-image img {
-    height: 800px;
-    margin-left: 350px;
+      height: 400px;
+      margin-left: 30px;
   }
-  
+
   .register-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 30px;
-    width: 50%;
+      width: 60%;
   }
-  
-  .register-logo {
-    max-width:400px; 
-    margin-bottom: 25px;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 350px;
-  }
-  
-  .form-label {
-    font-weight: bold;
-    font-size: 1.1rem;
-    margin-top: 12px;
-  }
-  
-  .form-input {
-    padding: 12px;
-    font-size: 1rem;
-    border: 3px solid #000;
-    border-radius: 50px;
-    margin-bottom: 12px;
-    color: #000;
-    background-color: #FAF9F7;
-  }
-  
-  .register-button {
-    background-color: #3D6B54;
-    color: #FFF;
-    padding: 12px;
-    font-size: 1.2rem;
-    border: none;
-    border-radius: 60px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-top: 12px;
-    width: 60%;
-    display: flex;
-    justify-content: center;
-    align-self: center;
-    font-style: bold;
-  }
-  
-  .register-link {
-    margin-top: 12px;
-    font-size: 1.2rem;
-    color: #000;
-    text-decoration: underline;
-  }
-  
-  .register-link:hover {
-    text-decoration: underline;
-  }
-  
-  @media (max-width: 768px) {
-    .register-container {
+}
+
+@media (max-width: 768px) {
+  .register-container {
       flex-direction: column;
       width: 90vw;
       padding: 15px;
-    }
-  
-    .register-image img {
-      max-width: 80%;
-    }
-  
-    .register-form {
-      width: 100%;
-      padding: 20px;
-    }
   }
-  
+
+  .register-image img {
+      height: 300px;
+      max-width: 90%;
+      margin-left: 0;
+  }
+
+  .register-form {
+      width: 100%;
+      padding: 15px;
+  }
+}
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-toggle-button {
+  background: none;
+  border: none;
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.password-toggle-button:focus {
+  outline: none;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.back-button:hover {
+  background-color: #e0e0e0;
+}
+
+.back-button:focus {
+  outline: none;
+}
