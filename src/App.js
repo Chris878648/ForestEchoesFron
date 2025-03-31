@@ -8,6 +8,8 @@ import LoginPage from "./Pages/LoginPage/loginPage";
 import Profile from "./Pages/ProfilePage/profilePage";
 import RegisterPage from "./Pages/RegisterPage/registerPage";
 import ForgotPasswordPage from './Pages/LoginPage/forgotPasswordPage';
+import ProtectedRoute from "./Components/protectedRoute";
+
 
 
 import { ToastContainer } from "react-toastify";
@@ -19,10 +21,38 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <HomePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <ProtectedRoute>
+              <Contact />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <ProtectedRoute>
+              <Cart />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/*" element={<Error />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       </Routes>
